@@ -1,0 +1,34 @@
+-- Drop and recreate tables
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS menu_items CASCADE;
+DROP TABLE IF EXISTS choices CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  phone INT NOT NULL
+);
+
+CREATE TABLE menu_items (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  photo_url VARCHAR(255)
+);
+
+CREATE TABLE choices (
+  id SERIAL PRIMARY KEY NOT NULL,
+  menu_id INT REFERENCES menu_items(id) ON DELETE CASCADE,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  choice_id INT REFERENCES choices(id) ON DELETE CASCADE,
+  time_ordered TIMESTAMP NOT NULL,
+  fill_time_minutes INT,
+  special_request VARCHAR(225)
+);
+
