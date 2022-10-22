@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS orders CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
-  phone INT NOT NULL
+  phone BIGINT NOT NULL
 );
 
 CREATE TABLE menu_items (
@@ -20,13 +20,13 @@ CREATE TABLE menu_items (
 CREATE TABLE choices (
   id SERIAL PRIMARY KEY NOT NULL,
   menu_id INT REFERENCES menu_items(id) ON DELETE CASCADE,
-  user_id INT REFERENCES users(id) ON DELETE CASCADE
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  order_id INT REFERENCES users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
-  choice_id INT REFERENCES choices(id) ON DELETE CASCADE,
   time_ordered TIMESTAMP NOT NULL,
   fill_time_minutes INT,
   special_request VARCHAR(225)
