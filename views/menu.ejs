@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" />
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/menu-container.css" />
 
     <!-- Google Fonts -->
     <link
@@ -61,11 +62,28 @@
         <button class="btn">Logout</button>
       </form>
     </nav>
-    <main>
-      <h2>A sample menu where the user can pick there food and add to cart</h2>
-      <img
-        src="img/fast-food-menu-template-design-5fe22c38724bd95ea68df82fb5483b08_screen.jpeg"
-      />
+    <main class="container">
+      <section id="menu-container">
+        <article class="menu-item">
+          <header>
+            <div>
+              <img src="img/Barbecue-beef-burger-68d57ec.webp" class="center" />
+              <br />
+              <h2><span>Burger</span></h2>
+              <h3><span>Type: Main</span></h3>
+              <h3>
+                <span><em>Special Instructions:</em></span>
+              </h3>
+            </div>
+          </header>
+          <footer>
+            <div></div>
+            <div>
+              <a href="/cart"><i class="fa-sharp fa-solid fa-plus"></i></a>
+            </div>
+          </footer>
+        </article>
+      </section>
     </main>
   </body>
 </html>
