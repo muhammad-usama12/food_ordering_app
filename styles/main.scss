@@ -17,11 +17,13 @@ body {
     position: fixed;
     top: 0%;
     width: 100%;
-    z-index: 9999;
 
     span {
       font-family: "poppins", sans-serif;
       font-size: 2em;
+    }
+    img {
+      justify-self: unset;
     }
   }
 
@@ -32,17 +34,9 @@ body {
   //   height: 200px;
   // }
 }
-
-// @mixin backgroundShorthand($imgpath, $position: 0 0, $repeat: no-repeat) {
-//   background: transparent url(#{$imgpath}) $repeat $position;
-// }
-// .testing2 {
-//   @include backgroundShorthand("/my/img/path.png");
-// }
-
-// @mixin backgroundImg($imgpath, $position: 0 0, $repeat: no-repeat) {
-//   background: transparent url($imgpath) $repeat $position;
-// }
-// .testing2 {
-//   @include backgroundImg("../public/img/960x0.jpeg");
-// }
+img {
+  padding-left: 20%;
+}
+.fa-solid:hover {
+  color: green;
+}
