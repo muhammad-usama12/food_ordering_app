@@ -5,10 +5,18 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
-router.get('/', (req, res) => {
-  res.render('menu');
+const express = require("express");
+const router = express.Router();
+router.get("/", (req, res) => {
+  res.render("menu");
+});
+router.get("/", (req, res) => {
+  req.session.user.id = req.params.id;
+  res.render("menu");
+});
+
+router.get("/", (req, res) => {
+  res.render("menu");
 });
 
 module.exports = router;
