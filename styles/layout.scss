@@ -3,4 +3,18 @@
 body,
 html {
   margin: 0;
+  font-family: "Source Sans Pro";
+}
+
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  justify-content: space-evenly;
+  align-self: center;
 }

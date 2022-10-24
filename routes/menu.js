@@ -5,25 +5,13 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router = express.Router();
-const menuQueries = require('../db/queries/menu')
-const cartQueries = require('../db/queries/cart')
 
-//This route is for testing the db query functions
-//can be deleted and replaced with actual route later
-router.get('/', (req, res) => {
-  req.session.cookie;
-  menuQueries.getMenuItems()
-    .then(menuItems => {
-      console.log({ menuItems });
-      res.json({ menuItems });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+const express = require("express");
+const router = express.Router();
+
+router.get("/", (req, res) => {
+  req.session.user_id = req.params.id;
+  res.render("menu");
 });
 
 module.exports = router;
