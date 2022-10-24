@@ -11,11 +11,7 @@ router.get("/", (req, res) => {
   res.render("menu");
 });
 router.get("/", (req, res) => {
-  req.session.user.id = req.params.id;
-  res.render("menu");
-});
-
-router.get("/", (req, res) => {
+  req.session.user_id = req.params.id;
   res.render("menu");
 });
 
