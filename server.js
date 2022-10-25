@@ -66,6 +66,16 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.post("/login", (req, res) => {
+  console.log('req.body: ', req.body);
+  const userId = req.body.userId;
+  console.log('userId: ', userId);
+  if (userId) {
+    req.session.user_id = userId;
+    res.redirect("/menu");
+  }
+});
+
 app.post("/logout", (req, res) => {
   req.session = null;
   res.redirect("/");
