@@ -8,10 +8,14 @@
 
 const express = require("express");
 const router = express.Router();
+const menuQueries = require('../db/queries/menu');
+
 
 router.get("/", (req, res) => {
-  req.session.user_id = req.params.id;
-  res.render("menu");
+  menuQueries.getMenuItems().then((results) => {
+      res.render("menu", {menuData: results });
+    });
 });
+
 
 module.exports = router;

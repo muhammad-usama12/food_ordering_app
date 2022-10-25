@@ -49,7 +49,7 @@
 
     <!-- External JS -->
     <script src="/vendor/jquery-3.0.0.js"></script>
-    <script defer src="/scripts/app.js"></script>
+    <script defer src="/scripts/menu.js"></script>
   </head>
 
   <body>
@@ -67,19 +67,22 @@
         <article class="menu-item">
           <header>
             <div>
-              <img src="img/Barbecue-beef-burger-68d57ec.webp" class="center" />
-              <br />
-              <h2><span>Burger</span></h2>
-              <h3><span>Type: Main</span></h3>
+              <h1 class="title">Menu</h1>
+              <h2> <% for (let i=0; i < menuData.length; i++) { %>
+                  <li><%= menuData[i].name.toUpperCase() %></li>
+                  <br>
+                  <i class="fa-sharp fa-solid fa-plus"></i>
+                  <br>
+                  <li class="photo_url" ><%= menuData[i].photo_url %>null</li>
+                   <!-- <%= menuData[i].type %> -->
+                  <% } %></h2>
               <h3>
-                <span><em>Special Instructions:</em></span>
               </h3>
             </div>
           </header>
           <footer>
             <div></div>
             <div>
-              <a href="/cart"><i class="fa-sharp fa-solid fa-plus"></i></a>
             </div>
           </footer>
         </article>
