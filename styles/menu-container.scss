@@ -6,35 +6,17 @@
 
   .menu-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-top: 1.5em;
     border: solid #000;
     border-radius: 7px;
+    padding-left: 20px;
   }
   // .menu-item header div {
   //   display: flex;
   //   flex-direction: column;
   //   padding-top: 40px;
   //   margin-left: 10px;
-  // }
-
-  .menu-item h1 {
-    display: flex;
-    justify-content: center;
-  }
-
-  .menu-item {
-    flex-direction: row;
-    padding-left: 20px;
-  }
-
-  // .menu-item footer {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   padding-bottom: 20px;
-  //   padding-left: 20px;
-  //   padding-right: 40px;
-  //   font-size: 3em;
   // }
   article.menu-item:hover {
     box-shadow: 8px 8px #dadcea;
