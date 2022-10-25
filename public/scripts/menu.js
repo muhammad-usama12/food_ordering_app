@@ -1,5 +1,15 @@
 $(document).ready(function() {
 
+  $('article.menu-item').on('click', '.add-to-cart', () => {
+    const menuItemData = $('article.menu-item') //NEED TO ACCESS MENU ITEM DATA AND COOKIE HERE
+    $.ajax({
+      url: `/cart`,
+      method: "POST",
+      data: menuItemData
+    })
+    .catch((e) => console.log('/cart post err: ', e.message))
+  })
+
 });
 
 
