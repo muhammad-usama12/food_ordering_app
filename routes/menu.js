@@ -13,9 +13,16 @@ const menuQueries = require('../db/queries/menu');
 
 router.get("/", (req, res) => {
   menuQueries.getMenuItems().then((results) => {
-      renderMenu(results);
+    res.send(results);
+    //res.render('menu');
     });
 });
+
+// router.get("/items", (req, res) => {
+//   menuQueries.getMenuItems().then((menuItems) => {
+//     renderMenu(menuItems);
+//   });
+// });
 
 
 module.exports = router;
