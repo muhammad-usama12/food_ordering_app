@@ -40,7 +40,7 @@ $(document).ready(function() {
     $("#menu-container").html("");
     for (let menu of menus) {
       const $menu = createMenuElement(menu);
-      $("#menu-container").prepend($menu);
+      $("#menu-container").append($menu);
     }
   };
 

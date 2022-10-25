@@ -40,6 +40,7 @@ app.use(
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require("./routes/users-api");
 const widgetApiRoutes = require("./routes/widgets-api");
+const menuApiRoutes = require("./routes/menu-api");
 const menuRoutes = require("./routes/menu");
 const cartRoutes = require("./routes/cart");
 
@@ -48,17 +49,18 @@ const cartRoutes = require("./routes/cart");
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
-app.use("/api/menu", menuRoutes);
+app.use("/api/menu", menuApiRoutes);
+app.use("/menu", menuRoutes);
 app.use("/cart", cartRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/menu",(req,res) =>{
-  //this route will display menu.ejs
-  res.render("menu");
-})
+// app.get("/menu",(req,res) =>{
+//   //this route will display menu.ejs
+//   res.render("menu");
+// })
 
 app.get("/", (req, res) => {
   res.render("index");

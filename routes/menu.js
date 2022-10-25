@@ -8,15 +8,11 @@
 
 const express = require("express");
 const router = express.Router();
-const menuQueries = require('../db/queries/menu');
-
 
 router.get("/", (req, res) => {
-  menuQueries.getMenuItems().then((results) => {
-    res.send(results);
-    //res.render('menu');
-    });
+  res.render('menu');
 });
+
 
 // router.get("/items", (req, res) => {
 //   menuQueries.getMenuItems().then((menuItems) => {
