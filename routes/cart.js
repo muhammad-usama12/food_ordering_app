@@ -6,9 +6,18 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
+const cartQueries = require('../db/queries/cart');
+
 router.get('/', (req, res) => {
-  res.render('cart');
+  cartQueries.getCartChoices().then((results) => {
+    res.render('cart', { cartData: results });
+  })
 });
+
+router.post('/', (req, res) => {
+  const userId = req.session.
+  menuQueries.addChoice()
+  })
 
 module.exports = router;
