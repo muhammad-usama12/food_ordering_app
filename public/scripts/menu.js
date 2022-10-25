@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  loadMenu();
+
   $('article.menu-item').on('click', '.add-to-cart', () => {
     const menuItemData = $('article.menu-item') //NEED TO ACCESS MENU ITEM DATA AND COOKIE HERE
     $.ajax({
@@ -10,36 +12,60 @@ $(document).ready(function() {
     .catch((e) => console.log('/cart post err: ', e.message))
   })
 
+
 });
 
 
 
+
+
+
+
+
+
 // Create's menu objects that matches key.value pairs from the database
-createTweetElement = function (menuObj) {
-  const $menu = $(`
-<article class="menu-item">
-        `);
+createMenuElement = function(menuObject) {
+  console.log('test');
+  const $menu = $('<article class="menu-item">');
+  const $menuId = $('<p></p>');
+  const $menuName = $('<h2></h2>');
+  const $menuPhoto = $('<p class="photo_url"></p>');
+  const $menuAddToCart = $('<i class="add-to-cart fa-sharp fa-solid fa-plus"></i>');
+
+  $menuName.text(menuObject.name);
+  console.log("menu object name:", menuObject.name);
+  $menuPhoto.text(menuObject.photo_url);
+  $menuId.text(menuObject.id);
+
+  $menu.append($menuId);
+  $menu.append($menuName);
+  $menu.append($menuPhoto);
+  $menu.append($menuAddToCart);
   return $menu;
 };
 
+
+
 //
-renderTweets = function (tweets) {
+renderMenu = function (menus) {
+  console.log('render menu test')
   $("#menu-container").html("");
-  for () {
-    const $menu = createTweetElement();
+  for (let menu of menus) {
+    const $menu = createMenuElement(menu);
     $("#menu-container").prepend($menu);
   }
 };
 
 //
 const loadMenu = function () {
+  console.log('load menu test')
   $.ajax({
     url: `/menu`,
     method: "GET",
   })
     .then(function (result) {
-      console.log(result);
-      renderTweets(result);
+      console.log("load menu result", result);
+      renderMenu(result);
     })
     .catch(function (err) {
       console.log(err);

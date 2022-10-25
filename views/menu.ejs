@@ -64,28 +64,15 @@
     </nav>
     <main class="container">
       <section id="menu-container">
+        <h1 class="title">Menu</h1>
+        <!-- <% for (let i=0; i < menuData.length; i++) { %>
         <article class="menu-item">
-          <header>
-            <div>
-              <h1 class="title">Menu</h1>
-              <h2> <% for (let i=0; i < menuData.length; i++) { %>
-                  <li><%= menuData[i].name.toUpperCase() %></li>
-                  <br>
+                  <h2><%= menuData[i].name.toUpperCase()%></h2>
                   <i class="add-to-cart fa-sharp fa-solid fa-plus"></i>
-                  <br>
-                  <li class="photo_url" ><%= menuData[i].photo_url %>null</li>
-                   <!-- <%= menuData[i].type %> -->
-                  <% } %></h2>
-              <h3>
-              </h3>
-            </div>
-          </header>
-          <footer>
-            <div></div>
-            <div>
-            </div>
-          </footer>
+                  <p class="photo_url" ><%= menuData[i].photo_url %>photo_url</p>
+                  <p> <%= menuData[i].id %></p>
         </article>
+        <% } %> -->
       </section>
     </main>
   </body>
