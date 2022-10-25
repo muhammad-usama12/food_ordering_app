@@ -66,10 +66,9 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+//login does not check if userID exists or check password
 app.post("/login", (req, res) => {
-  console.log('req.body: ', req.body);
-  const userId = req.body.userId;
-  console.log('userId: ', userId);
+  const userId = req.body.userId
   if (userId) {
     req.session.user_id = userId;
     res.redirect("/menu");
