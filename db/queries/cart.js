@@ -1,7 +1,3 @@
-//additional info to verify:
-//1. Queries work
-//2. functions are required in the public scriptsconst db = require('../connection');
-
 const db = require("../connection");
 
 const getCartChoices = (userId) => {
@@ -26,6 +22,39 @@ const deleteCartChoice = (choiceId) => {
       return data.rows[0];
     })
     .catch((e) => console.log('deleteCartChoice err: ', e.message));
+};
+
+const createOrder = (userId, specialRequest) => {
+  const ordersQueryParams = [userId];
+  let ordersQuery1 = `INSERT INTO orders (user_id,`;
+  let ordersQuery2 = `VALUES($1,`;
+  if (specialRequest) {
+    ordersQueryParams.push(specialRequest);
+    ordersQuery1 += ` special_requests,`;
+    ordersQuery2 += ` $2,`;
+  }
+  ordersQuery1 += ` time_ordered) `;
+  let ordersQuery = ordersQuery1 + ordersQuery2 + ` Now()) RETURNING *`;
+  //-----------------------------------
+  return db.query('BEGIN')
+    .then(data => {
+      return db.query(ordersQuery, ordersQueryParams);
+    })
+    .then(order => {
+      console.log('order row: ', order.rows[0])
+      console.log('order id: ', order.rows[0].id)
+      return db.query(`
+        UPDATE choices
+        SET order_id = $1
+        WHERE user_id = $2 AND order_id IS NULL
+        RETURNING *
+        `, [order.rows[0].id, userId]);
+    })
+    .then(choices => {
+      console.log(choices);
+      return db.query(`COMMIT`);
+    })
+    .catch(e => console.log('createOrder Err: ', e.message));
 };
 
 
