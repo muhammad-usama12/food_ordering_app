@@ -13,27 +13,35 @@ $(document).ready(function() {
 
   // Create's cart objects that matches key.value pairs from the database
   createCartElement = function(cartObject) {
-    console.log('test');
+    console.log('Cart Object:', cartObject);
     const $cart = $('<article class="cart-item">');
     const $cartId = $('<p></p>');
-    const $cartOrderId = $('<p></p>');
     const $cartTimeOrdered = $('<p></p>');
     const $cartSpecialRequest = $('<p></p>');
-    const $cartDelete = $('<button type="button" class="btn btn-outline-danger">Delete</button>');
+    const $cartName = $('<h2></h2>');
+    const $cartPhoto = $('<p></p>');
+    const $cartDelete = $('<button type="button" class="btn">Delete</button>');
+    // const $itemDiv = $('<div class=item_container></div>')
 
+    // $cart.append($itemDiv);
     $cartId.text(cartObject.id);
-    $cartOrderId.text(cartObject.order_id);
     $cartTimeOrdered.text(cartObject.time_ordered);
     $cartSpecialRequest.text(cartObject.special_request);
+    $cartName.text(cartObject.name);
+    $cartPhoto.text(cartObject.photo_url);
 
     $cart.append($cartId);
-    $cart.append($cartOrderId);
     $cart.append($cartTimeOrdered);
     $cart.append($cartSpecialRequest);
+    $cart.append($cartName);
+    $cart.append($cartPhoto);
     $cart.append($cartDelete);
     return $cart;
   };
 
+  $("button").click(function() {
+    alert( "Delete button is working" );
+  });
 
 
   //
