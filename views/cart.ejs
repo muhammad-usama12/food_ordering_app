@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="/vendor/border-box.css" />
     <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/cart-container.css" />
 
     <!-- Google Fonts -->
     <link
@@ -51,21 +52,18 @@
   </head>
 
   <body>
-    <div class="back-image"></div>
     <!-- Nav Bar (Fixed) -->
     <nav>
       <span> Restaurant Name </span>
       <a href="/cart"><i class="fa-solid fa-bag-shopping"></i></a>
       <form class="form-group" action="/logout" method="POST">
-        <button class="btn">Logout</button>
+        <button>Logout</button>
       </form>
     </nav>
-    <main>
-      <h2>
-        A sample checkout page where the user can either checkout or decide
-        whether special instructions need to be added
-      </h2>
-      <img src="img/WooCommerce-Restaurant-Ordering-plugin-820x681.png" />
+    <main class="container">
+      <h1>Cart</h1>
+      <section id="cart-container">
+      </section>
     </main>
   </body>
 </html>

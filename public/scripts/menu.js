@@ -1,15 +1,16 @@
 $(document).ready(function() {
 
-
   $('article.menu-item').on('click', '.add-to-cart', function() {
-    const menuItemData = $(this).find('menu_id') //NEED TO ACCESS MENU ITEM DATA AND COOKIE HERE
+    const menuItemData = $(this).find('p.menu_id').text()
+    console.log('this: ', this);
+    console.log('menuItemData: ', menuItemData);
     $.ajax({
       url: `/api/cart`, //link to api/cart once merged
       method: "POST",
       data: menuItemData
     })
     .catch((e) => console.log('/cart post err: ', e.message))
-  })
+  });
 
   // Create's menu objects that matches key.value pairs from the database
   createMenuElement = function(menuObject) {
@@ -58,9 +59,5 @@ $(document).ready(function() {
     });
   };
 
-  loadMenu();
-
+    loadMenu();
 });
-
-
-
