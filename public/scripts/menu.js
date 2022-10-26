@@ -5,9 +5,9 @@ $(document).ready(function() {
     const $menuItem = $cartButton.closest('article.menu-item');
     const menuId = $menuItem.find('p.menu_id').text()
     $.ajax({
-      url: `/api/cart`, //link to api/cart once merged
+      url: `/api/cart`,
       method: "POST",
-      data: menuId
+      data: { menuId }
     })
     .catch((e) => console.log('/cart post err: ', e.message))
   });
