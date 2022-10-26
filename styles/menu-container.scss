@@ -12,12 +12,7 @@
     border-radius: 7px;
     padding-left: 20px;
   }
-  // .menu-item header div {
-  //   display: flex;
-  //   flex-direction: column;
-  //   padding-top: 40px;
-  //   margin-left: 10px;
-  // }
+
   article.menu-item:hover {
     box-shadow: 8px 8px #dadcea;
   }
@@ -26,7 +21,6 @@
     padding-inline-start: 70px;
     position: relative;
     top: 20px;
-
   }
   .photo_url {
     display: flex;
