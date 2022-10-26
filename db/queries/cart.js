@@ -36,10 +36,7 @@ const createOrder = (userId, specialRequest) => {
   ordersQuery1 += ` time_ordered) `;
   let ordersQuery = ordersQuery1 + ordersQuery2 + ` Now()) RETURNING *`;
   //-----------------------------------
-  return db.query('BEGIN')
-    .then(data => {
-      return db.query(ordersQuery, ordersQueryParams);
-    })
+  return db.query(ordersQuery, ordersQueryParams)
     .then(order => {
       return db.query(`
         UPDATE choices
@@ -47,9 +44,6 @@ const createOrder = (userId, specialRequest) => {
         WHERE user_id = $2 AND order_id IS NULL
         RETURNING *
         `, [order.rows[0].id, userId]);
-    })
-    .then(choices => {
-      return db.query(`COMMIT`);
     })
     .catch(e => console.log('createOrder Err: ', e.message));
 };
