@@ -1,13 +1,13 @@
 $(document).ready(function() {
 
-  $('article.menu-item').on('click', '.add-to-cart', function() {
-    const menuItemData = $(this).find('p.menu_id').text()
-    console.log('this: ', this);
-    console.log('menuItemData: ', menuItemData);
+  $('#menu-container').on('click', 'i.add-to-cart', function() {
+    const $cartButton = $(event.target);
+    const $menuItem = $cartButton.closest('article.menu-item');
+    const menuId = $menuItem.find('p.menu_id').text()
     $.ajax({
       url: `/api/cart`, //link to api/cart once merged
       method: "POST",
-      data: menuItemData
+      data: menuId
     })
     .catch((e) => console.log('/cart post err: ', e.message))
   });
