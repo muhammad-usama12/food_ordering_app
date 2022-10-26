@@ -57,10 +57,6 @@ app.use("/cart", cartRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-// app.get("/menu",(req,res) =>{
-//   //this route will display menu.ejs
-//   res.render("menu");
-// })
 
 app.get("/", (req, res) => {
   res.render("index");

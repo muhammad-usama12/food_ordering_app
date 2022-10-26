@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
 
-  $('article.menu-item').on('click', '.add-to-cart', () => {
-    const menuItemData = $('article.menu-item') //NEED TO ACCESS MENU ITEM DATA AND COOKIE HERE
+  $('article.menu-item').on('click', '.add-to-cart', function() {
+    const menuItemData = $(this).find('menu_id') //NEED TO ACCESS MENU ITEM DATA AND COOKIE HERE
     $.ajax({
-      url: `/cart`,
+      url: `/api/cart`, //link to api/cart once merged
       method: "POST",
       data: menuItemData
     })
@@ -15,7 +15,7 @@ $(document).ready(function() {
   createMenuElement = function(menuObject) {
     console.log('test');
     const $menu = $('<article class="menu-item">');
-    const $menuId = $('<p></p>');
+    const $menuId = $('<p class="menu_id"></p>');
     const $menuName = $('<h2></h2>');
     const $menuPhoto = $('<p class="photo_url"></p>');
     const $menuAddToCart = $('<i class="add-to-cart fa-sharp fa-solid fa-plus"></i>');
@@ -31,8 +31,6 @@ $(document).ready(function() {
     $menu.append($menuAddToCart);
     return $menu;
   };
-
-
 
   //
   renderMenu = function (menus) {
