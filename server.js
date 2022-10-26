@@ -6,6 +6,7 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
+const twilio = require("./twilio")
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -44,7 +45,6 @@ const menuApiRoutes = require("./routes/menu-api");
 const menuRoutes = require("./routes/menu");
 const cartApiRoutes = require("./routes/cart-api");
 const cartRoutes = require("./routes/cart");
-const twilio = require("./twilio")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
