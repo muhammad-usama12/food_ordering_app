@@ -41,8 +41,6 @@ const createOrder = (userId, specialRequest) => {
       return db.query(ordersQuery, ordersQueryParams);
     })
     .then(order => {
-      console.log('order row: ', order.rows[0])
-      console.log('order id: ', order.rows[0].id)
       return db.query(`
         UPDATE choices
         SET order_id = $1
@@ -51,7 +49,6 @@ const createOrder = (userId, specialRequest) => {
         `, [order.rows[0].id, userId]);
     })
     .then(choices => {
-      console.log(choices);
       return db.query(`COMMIT`);
     })
     .catch(e => console.log('createOrder Err: ', e.message));
