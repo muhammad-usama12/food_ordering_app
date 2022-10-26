@@ -4,12 +4,12 @@ $(document).ready(function() {
   createCartElement = function(cartObject) {
     console.log('Cart Object:', cartObject);
     const $cart = $('<article class="cart-item">');
-    const $cartId = $('<p></p>');
+    const $cartId = $('<p class="cart_id"></p>');
     const $cartTimeOrdered = $('<p></p>');
     const $cartSpecialRequest = $('<p></p>');
     const $cartName = $('<h2></h2>');
     const $cartPhoto = $('<p></p>');
-    const $cartDelete = $('<button type="button" class="btn">Delete</button>');
+    const $cartDelete = $('<button type="button" class="remove-item btn">Remove</button>');
     // const $itemDiv = $('<div class=item_container></div>')
 
     // $cart.append($itemDiv);
@@ -28,8 +28,20 @@ $(document).ready(function() {
     return $cart;
   };
 
-  $("button").click(function() {
-    alert( "Delete button is working" );
+  $('#cart-container').on('click', 'button.remove-item', function() {
+    const $removeButton = $(event.target);
+    const $cartItem = $removeButton.closest('article.cart-item');
+    const cartId = $cartItem.find('p.cart_id').text()
+    $.ajax({
+      url: `/api/cart/delete`,
+      method: "POST",
+      data: { cartId }
+    }).then((result) => {
+      //should use dynamic reload like with tweeter
+      console.log(result);
+      location.reload();
+    })
+      .catch((e) => console.log('/cart/delete post err: ', e.message))
   });
 
 

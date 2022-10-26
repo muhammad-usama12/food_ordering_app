@@ -18,4 +18,15 @@ router.post("/", (req, res) => {
   })
 });
 
+router.post("/delete", (req, res) => {
+  console.log('delete router reached')
+  const cartId = req.body.cartId;
+  console.log('cartId: ', cartId);
+  cartQueries.deleteCartChoice(cartId).then((results) => {
+    console.log('deleteCartChoice called and returned');
+    res.json({ results });
+    // res.render('cart');
+  })
+});
+
 module.exports = router;
