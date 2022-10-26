@@ -27,6 +27,7 @@ const addChoice = (menuId, userId) => {
   return db.query(`
     INSERT INTO choices (menu_id, user_id)
     VALUES ($1, $2)
+    RETURNING *
     `, [menuId, userId])
     .then(data => {
       return data.rows[0];
