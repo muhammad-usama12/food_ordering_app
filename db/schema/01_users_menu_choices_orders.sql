@@ -20,18 +20,18 @@ CREATE TABLE menu_items (
   type VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE choices (
-  id SERIAL PRIMARY KEY NOT NULL,
-  menu_id INT REFERENCES menu_items(id) ON DELETE CASCADE,
-  user_id INT REFERENCES users(id) ON DELETE CASCADE,
-  order_id INT REFERENCES users(id) ON DELETE CASCADE
-);
-
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
   time_ordered TIMESTAMP NOT NULL,
   fill_time_minutes INT,
   special_request VARCHAR(225)
+);
+
+CREATE TABLE choices (
+  id SERIAL PRIMARY KEY NOT NULL,
+  menu_id INT REFERENCES menu_items(id) ON DELETE CASCADE,
+  user_id INT REFERENCES users(id) ON DELETE CASCADE,
+  order_id INT REFERENCES orders(id) ON DELETE CASCADE
 );
 
