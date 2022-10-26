@@ -13,7 +13,6 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const userId = req.session.user_id;
   const menuId = req.body.menuId;
-  console.log("menuId:", menuId);
   menuQueries.addChoice(menuId, userId).then((results) => {
     res.send(results);
   })
