@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   const loadOrders = function() {
     console.log('load orders test')
     $.ajax({
@@ -15,7 +14,6 @@ $(document).ready(function() {
         console.log(err);
       });
   };
-
 
   renderOrders = function(itemList) {
     $("#orders-container").html("");
@@ -39,8 +37,8 @@ $(document).ready(function() {
     const $orderIdMessage = $('<h2>OrderId Number:<h2>')
     const $orderId = $('<h2></h2>');
     const $orderItemSection = $(`<section class="order-${orderId}"></section>`)
-    const $orderFillTime = $('<form class="form-group" action="/orders/:id" method="POST"><input class="form-control" type="fill-time" name="fill-time" placeholder="Order Fill Time"><button type="submit" class="btn">Alert Customer</button></form>');
-    const $orderComplete = $('<form class="form-group" action="/orders/:id" method="GET"><button type="submit" class="btn">Order Complete</button></form>');
+    const $orderFillTime = $(`<form class="form-group" action="/api/orders/${orderId}" method="POST"><input class="form-control" type="fill-time" name="fill-time" placeholder="Order Fill Time"><button type="submit" class="btn">Alert Customer</button></form>`);
+    const $orderComplete = $(`<form class="form-group" action="/api/orders/${orderId}" method="GET"><button type="submit" class="btn">Order Complete</button></form>`);
 
     $orderId.text(orderId);
 
