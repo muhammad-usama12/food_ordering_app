@@ -10,14 +10,11 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const userId = req.session.user_id;
   cartQueries.createOrder(userId, null).then((results) => {
-    res.render('cart');
+    order_id = results.rows[0].order_id
+    res.render('order', {order_id: order_id});
   })
 });
 
 
-// router.post('/', (req, res) => {
-//   const userId = req.session.
-//   menuQueries.addChoice()
-//   })
 
 module.exports = router;
