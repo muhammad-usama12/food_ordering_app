@@ -10,8 +10,10 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
   const userId = req.session.user_id;
+  console.log(userId);
   cartQueries.createOrder(userId, null).then((results) => {
-    twilio.sendTextMessageRestaurant();
+    //twilio.sendTextMessageRestaurant();
+    console.log('create Order Resluts: ', results);
     order_id = results.rows[0].order_id
     res.render('order', {order_id: order_id});
   })

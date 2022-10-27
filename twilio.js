@@ -27,4 +27,4 @@ const sendTextMessageRestaurant = function () {
     });
   }
 
-module.exports = { sendTextMessageCustomer, sendTextMessageRestaurant };
+// module.exports = { sendTextMessageCustomer, sendTextMessageRestaurant };

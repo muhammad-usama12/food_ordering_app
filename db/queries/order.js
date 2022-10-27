@@ -41,8 +41,10 @@ const addFillTimeByPhone = (fillTime, phoneNumber) => {
 
 const getIncompleteOrders = () => {
   return db.query(`
-  SELECT id
+  SELECT orders.id, menu_items.name, orders.fill_time_minutes
   FROM orders
+  JOIN choices ON orders.id=choices.order_id
+  JOIN menu_items ON menu_items.id=menu_id
   WHERE time_completed IS NULL
   `)
     .then(data => {

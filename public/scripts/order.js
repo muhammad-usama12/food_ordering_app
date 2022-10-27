@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 
   const loadOrder = function() {
-  console.log('load cart test')
+  console.log('load order test')
   $.ajax({
     url: `/api/order`,
     method: "GET",
@@ -23,7 +23,7 @@ $('.fill-time-submit').submit(function() { // catch the form's submit event
   $.ajax({
       url: '/api/orders', // the file to call
       data: $(this).serialize(), // get the form data
-      method: "", // GET or POST
+      method: "POST", // GET or POST
       success: function(response) { // on success send twilio message
       }
   });
@@ -37,6 +37,7 @@ $('.fill-time-submit').submit(function() { // catch the form's submit event
 
 renderOrder = function(order) {
   $("#order-container").html("");
+  console.log(order);
   const $orderMessage = createOrderMessage(order);
   $("#order-container").append($orderMessage);
   for (let item of order) {
