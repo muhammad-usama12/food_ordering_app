@@ -56,8 +56,8 @@ const orderRoutes = require("./routes/order");
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use("/api/menu", menuApiRoutes);
 app.use("/api/cart", cartApiRoutes);
-app.use("/api/orders", ordersApiRoutes);
 app.use("/api/order", orderApiRoutes);
+app.use("/api/orders", ordersApiRoutes);
 app.use("/menu", menuRoutes);
 app.use("/cart", cartRoutes);
 app.use("/order", orderRoutes);

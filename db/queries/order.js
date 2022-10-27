@@ -50,8 +50,21 @@ const getIncompleteOrders = () => {
     }).catch((e) => console.log('getIncompleteOrders err: ', e.message));
 }
 
+const getOrderIdByUserId = (userId) => {
+  return db.query(`
+  SELECT id
+  FROM orders
+  WHERE user_id = $1
+  ORDER BY time_ordered DESC
+  LIMIT 1
+  `, [userId])
+    .then(data => {
+      return data.rows[0];
+    }).catch((e) => console.log('getPhoneByOrderId err: ', e.message));
+};
 
 
 
 
-module.exports = { getItemsByOrderId, getPhoneByOrderId, addFillTimeByPhone, getIncompleteOrders };
+
+module.exports = { getItemsByOrderId, getPhoneByOrderId, addFillTimeByPhone, getIncompleteOrders, getOrderIdByUserId };

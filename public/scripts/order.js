@@ -1,14 +1,14 @@
 $(document).ready(function() {
 
 
-const loadOrder = function() {
+  const loadOrder = function() {
   console.log('load cart test')
   $.ajax({
     url: `/api/order`,
     method: "GET",
   })
-  .then(function (result) {
-    console.log("load order result", result);
+  .then(function(result) {
+
     renderOrder(result);
   })
   .catch(function (err) {
@@ -16,43 +16,31 @@ const loadOrder = function() {
   });
 };
 
-//
-// renderOrder = function(orders) {
-//   console.log('render order test')
-//   $("#order-container").html("");
-//   for (let order of orders) {
-//     const $order = createOrderElement(order);
-//     $("#order-container").append($order);
-//   }
-// };
 
-// // Create's order objects that matches key.value pairs from the database
-// createOrderElement = function(orderObject) {
-//   console.log('Order Object:', orderObject);
-//   const $order = $('<article class="order-item">');
-//   const $cartId = $('<p></p>');
-//   const $cartTimeOrdered = $('<p></p>');
-//   const $cartSpecialRequest = $('<p></p>');
-//   const $cartName = $('<h2></h2>');
-//   const $cartPhoto = $('<p></p>');
-//   const $cartDelete = $('<button type="button" class="remove-item btn">Remove</button>');
-//   // const $itemDiv = $('<div class=item_container></div>')
+renderOrder = function(order) {
+  $("#order-container").html("");
+  for (let item of order) {
+    const $order = createOrderElement(item);
+    $("#order-container").append($order);
+  }
+};
 
-//   // $cart.append($itemDiv);
-//   // $cartId.text(cartObject.id);
-//   // $cartTimeOrdered.text(cartObject.time_ordered);
-//   // $cartSpecialRequest.text(cartObject.special_request);
-//   // $cartName.text(cartObject.name);
-//   // $cartPhoto.text(cartObject.photo_url);
+// Create's order objects that matches key.value pairs from the database
+createOrderElement = function(orderObject) {
+  console.log('Order Object:', orderObject);
+  console.log('Order Object name:', orderObject.name);
+  const $order = $('<article class="order-item">');
+  const $itemName = $('<h2></h2>');
+  const $itemPhoto = $('<p></p>');
 
-//   $order.append($cartId);
-//   $order.append($cartTimeOrdered);
-//   $order.append($cartSpecialRequest);
-//   $order.append($cartName);
-//   $order.append($cartPhoto);
-//   $order.append($cartDelete);
-//   return $order;
-// };
+  $itemName.text(orderObject.name);
+  $itemPhoto.text(orderObject.photo_url);
+
+  $order.append($itemName);
+  $order.append($itemPhoto);
+
+  return $order;
+};
 
 
 loadOrder();
