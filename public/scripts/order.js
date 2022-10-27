@@ -1,4 +1,6 @@
 
+
+//getUserByOrderId
 $(document).ready(function() {
 
 
@@ -15,6 +17,22 @@ $(document).ready(function() {
     console.log(err);
   });
 };
+
+
+$('.fill-time-submit').submit(function() { // catch the form's submit event
+  $.ajax({
+      url: '/api/orders', // the file to call
+      data: $(this).serialize(), // get the form data
+      method: "", // GET or POST
+      success: function(response) { // on success send twilio message
+      }
+  });
+  return false; // cancel original event to prevent form submitting
+});
+
+
+//class .fill-time-submit
+// sends the stuff to twilio
 
 
 renderOrder = function(order) {
@@ -63,5 +81,3 @@ createOrderElement = function(orderObject) {
 loadOrder();
 
 });
-
-// class for form fill-time-submit
