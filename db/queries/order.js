@@ -12,7 +12,7 @@ const getItemsByOrderId = (orderId) => {
     }).catch((e) => console.log('getItemsByOrderId err: ', e.message));
 };
 
-const getPhoneByOrderId = (orderId) => {
+const getUserByOrderId = (orderId) => {
   return db.query(`
   SELECT DISTINCT users.phone, users.name
   FROM users
@@ -67,4 +67,4 @@ const getOrderIdByUserId = (userId) => {
 
 
 
-module.exports = { getItemsByOrderId, getPhoneByOrderId, addFillTimeByPhone, getIncompleteOrders, getOrderIdByUserId };
+module.exports = { getItemsByOrderId, getUserByOrderId, addFillTimeByPhone, getIncompleteOrders, getOrderIdByUserId };
