@@ -24,8 +24,8 @@ $('.fill-time-submit').submit(function() { // catch the form's submit event
       url: '/api/orders', // the file to call
       data: $(this).serialize(), // get the form data
       method: "POST", // GET or POST
-      success: function(response) { // on success send twilio message
-      }
+      // success: function(response) { // on success send twilio message
+      // }
   });
   return false; // cancel original event to prevent form submitting
 });
