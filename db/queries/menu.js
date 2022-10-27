@@ -34,4 +34,15 @@ const addChoice = (menuId, userId) => {
     }).catch((e) => console.log('addChoice err: ', e.message));
 };
 
-module.exports = { getMenuItems, getMenuItemsByType, addChoice };
+const checkAdmin = (userId) => {
+  return db.query(`
+    SELECT is_admin
+    FROM users
+    WHERE id=$1
+    `, [userId])
+    .then(data => {
+      return data.rows[0];
+    }).catch((e) => console.log('checkAdmin err: ', e.message));
+};
+
+module.exports = { getMenuItems, getMenuItemsByType, addChoice, checkAdmin };

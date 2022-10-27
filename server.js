@@ -6,7 +6,8 @@ const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const morgan = require("morgan");
 const cookieSession = require("cookie-session");
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const menuQueries = require('./db/queries/menu');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const PORT = process.env.PORT || 8080;
@@ -66,10 +67,17 @@ app.get("/", (req, res) => {
 //login does not check if userID exists or check password
 app.post("/login", (req, res) => {
   const userId = req.body.userId
-  if (userId) {
-    req.session.user_id = userId;
-    res.redirect("/menu");
-  }
+  menuQueries.checkAdmin(userId)
+    .then(result => {
+      if (userId && result.is_admin) {
+        req.session.user_id = userId;
+        res.redirect("/order");
+      }
+      if (userId) {
+        req.session.user_id = userId;
+        res.redirect("/menu");
+      }
+    })
 });
 
 app.post("/logout", (req, res) => {
