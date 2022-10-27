@@ -22,6 +22,16 @@ router.get("/", (req, res) => {
     });
 });
 
+// router.post("/:id", (req, res) => {
+//   const userId = req.session.user_id;
+//   const orderId = req.params.id;
+//   checkAdmin(userId)
+//     .then(result => {
+//       if (result.is_admin) {
+//         return res.render('menu');
+//       }
+// })
+
 
 
 module.exports = router;
