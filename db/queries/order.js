@@ -25,13 +25,13 @@ const getUserByOrderId = (orderId) => {
     }).catch((e) => console.log('getPhoneByOrderId err: ', e.message));
 };
 
-const addFillTimeByOrderId = (fillTime, OrderId) => {
+const addFillTimeByOrderId = (fillTime, orderId) => {
   return db.query(`
   UPDATE orders
   SET fill_time_minutes = $1
   WHERE id = $2
   RETURNING id, fill_time_minutes
-  `, [fillTime, OrderId])
+  `, [fillTime, orderId])
     .then(data => {
       return data.rows[0];
     }).catch((e) => console.log('addFillTimeByOrderId err: ', e.message));
@@ -63,8 +63,23 @@ const getOrderIdByUserId = (userId) => {
     }).catch((e) => console.log('getPhoneByOrderId err: ', e.message));
 };
 
+const addTimeCompletedByOrderId = (orderId) => {
+  return db.query(`
+  UPDATE orders
+  SET time_completed = Now()
+  WHERE id = $1
+  RETURNING id
+  `, [orderId])
+    .then(data => {
+      return data.rows[0];
+    }).catch((e) => console.log('addTimeCompleted err: ', e.message));
+};
 
-
-
-
-module.exports = { getItemsByOrderId, getUserByOrderId, addFillTimeByOrderId, getIncompleteOrders, getOrderIdByUserId };
+module.exports = {
+  getItemsByOrderId,
+  getUserByOrderId,
+  addFillTimeByOrderId,
+  getIncompleteOrders,
+  getOrderIdByUserId,
+  addTimeCompletedByOrderId
+};

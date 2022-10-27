@@ -52,6 +52,22 @@ router.post("/:id", (req, res) => {
     .catch((e) => console.log(e.message));
 })
 
+router.get("/:id", (req, res) => {
+  const userId = req.session.user_id;
+  const orderId = req.params.id;
+  console.log('orderId from params: ', orderId);
+  checkAdmin(userId)
+    .then(result => {
+      if (!result.is_admin) {
+        res.render('menu')
+      }
+      console.log('calling time_completed function...');
+      return orderQueries.addTimeCompletedByOrderId(orderId)
+    })
+    .then(result => res.render('orders'))
+    .catch((e) => console.log(e.message));
+})
+
 //-----------------need get to /:id as well------------------
 
 
