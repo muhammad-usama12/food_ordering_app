@@ -2,6 +2,7 @@ const express = require("express");
 const { checkAdmin } = require("../db/queries/menu");
 const router = express.Router();
 const orderQueries = require('../db/queries/order');
+const { sendTextMessageCustomer } = require("../twilio");
 
 router.get("/", (req, res) => {
   const userId = req.session.user_id;
@@ -22,15 +23,23 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.post("/:id", (req, res) => {
-//   const userId = req.session.user_id;
-//   const orderId = req.params.id;
-//   checkAdmin(userId)
-//     .then(result => {
-//       if (result.is_admin) {
-//         return res.render('menu');
-//       }
-// })
+router.post("/:id", (req, res) => {
+  const userId = req.session.user_id;
+  const orderId = req.params.id;
+  const fillTime = req.body.fillTime;
+  console.log('orderId from params: ', orderId);
+  checkAdmin(userId)
+    .then(result => {
+      if (result.is_admin) {
+        console.log('calling filltime function...');
+        orderQueries.addFillTimeByOrderId(fillTime, orderId)
+          .then(result => res.render('orders'))
+          .catch((e) => console.log(e.message));
+      }
+    })
+});
+
+  //-----------------need get to /:id as well------------------
 
 
 // for retrieveing name, phone, orderId, fill_time

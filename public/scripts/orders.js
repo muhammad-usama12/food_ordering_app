@@ -15,6 +15,11 @@ $(document).ready(function() {
       });
   };
 
+  $('#orders-container').on('submit', '.fill-time', function() {
+    console.log('hi');
+    loadOrders();
+  });
+
   renderOrders = function(itemList) {
     $("#orders-container").html("");
     let outstandingOrders = [];
@@ -33,12 +38,17 @@ $(document).ready(function() {
   createOrdersMessage = function(itemObject) {
 
     const orderId = itemObject.id;
+    const fillTime = itemObject.fill_time_minutes;
     const $orderMessageDiv = $('<div class="order-message"></div>')
     const $orderIdMessage = $('<h2>OrderId Number:<h2>')
     const $orderId = $('<h2></h2>');
     const $orderItemSection = $(`<section class="order-${orderId}"></section>`)
-    const $orderFillTime = $(`<form class="form-group" action="/api/orders/${orderId}" method="POST"><input class="form-control" type="fill-time" name="fill-time" placeholder="Order Fill Time"><button type="submit" class="btn">Alert Customer</button></form>`);
-    const $orderComplete = $(`<form class="form-group" action="/api/orders/${orderId}" method="GET"><button type="submit" class="btn">Order Complete</button></form>`);
+    let $orderFillTime = $(`<form class="fill-time form-group" action="/api/orders/${orderId}" method="POST"><input class="form-control" type="fillTime" name="fillTime" placeholder="Order Fill Time"><button type="submit" class="btn">Alert Customer</button></form>`);
+    const $orderComplete = $(`<form class="order-complete form-group" action="/api/orders/${orderId}" method="GET"><button type="submit" class="btn">Order Complete</button></form>`);
+    if (fillTime) {
+      $orderFillTime = $('<h3></h3>');
+      $orderFillTime.text(`Order Fill Time: ${fillTime} minutes`);
+    }
 
     $orderId.text(orderId);
 
