@@ -30,16 +30,29 @@ router.post("/:id", (req, res) => {
   console.log('orderId from params: ', orderId);
   checkAdmin(userId)
     .then(result => {
-      if (result.is_admin) {
-        console.log('calling filltime function...');
-        orderQueries.addFillTimeByOrderId(fillTime, orderId)
-          .then(result => res.render('orders'))
-          .catch((e) => console.log(e.message));
+      if (!result.is_admin) {
+        res.render('menu')
       }
+      console.log('calling filltime function...');
+      return orderQueries.addFillTimeByOrderId(fillTime, orderId)
     })
-});
+    .then(result => {
+      const orderId = result.id;
+      return orderQueries.getUserByOrderId(orderId)
+    })
+    .then((result) => {
+      const orderId = result.order_id;
+      const name = result.name;
+      const phone = result.phone;
+      const fill_time = result.fill_time_minutes;
+      sendTextMessageCustomer(name, phone, orderId, fill_time)
+      console.log('orderId: ', orderId)
+    })
+    .then(result => res.render('orders'))
+    .catch((e) => console.log(e.message));
+})
 
-  //-----------------need get to /:id as well------------------
+//-----------------need get to /:id as well------------------
 
 
 // for retrieveing name, phone, orderId, fill_time

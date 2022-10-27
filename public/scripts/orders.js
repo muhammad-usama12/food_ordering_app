@@ -15,11 +15,6 @@ $(document).ready(function() {
       });
   };
 
-  $('#orders-container').on('submit', '.fill-time', function() {
-    console.log('hi');
-    loadOrders();
-  });
-
   renderOrders = function(itemList) {
     $("#orders-container").html("");
     let outstandingOrders = [];
