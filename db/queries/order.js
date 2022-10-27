@@ -14,7 +14,7 @@ const getItemsByOrderId = (orderId) => {
 
 const getUserByOrderId = (orderId) => {
   return db.query(`
-  SELECT DISTINCT users.phone, users.name
+  SELECT DISTINCT users.phone, users.name, choices.order_id
   FROM users
   JOIN choices on users.id=user_id
   WHERE order_id = $1
