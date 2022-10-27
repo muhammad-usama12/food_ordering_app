@@ -8,7 +8,6 @@ $(document).ready(function() {
     method: "GET",
   })
   .then(function(result) {
-
     renderOrder(result);
   })
   .catch(function (err) {
@@ -19,11 +18,30 @@ $(document).ready(function() {
 
 renderOrder = function(order) {
   $("#order-container").html("");
+  const $orderMessage = createOrderMessage(order);
+  $("#order-container").append($orderMessage);
   for (let item of order) {
     const $order = createOrderElement(item);
     $("#order-container").append($order);
   }
 };
+
+  createOrderMessage = function(orderObject) {
+
+    const orderId = orderObject[0].order_id;
+    const $orderMessageDiv = $('<div class="order-message"></div>')
+    const $orderMessage = $('<h1>Your order is awaiting confirmation from the Restaurant!</h1>');
+    const $orderIdMessage = $('<h2>Your order number is: <h2>')
+    const $orderId = $('<h2></h2>');
+
+    $orderId.text(orderId);
+
+    $orderMessageDiv.append($orderMessage);
+    $orderMessageDiv.append($orderIdMessage);
+    $orderMessageDiv.append($orderId);
+
+    return $orderMessageDiv;
+  };
 
 // Create's order objects that matches key.value pairs from the database
 createOrderElement = function(orderObject) {
@@ -34,10 +52,8 @@ createOrderElement = function(orderObject) {
   const $itemPhoto = $('<p></p>');
 
   $itemName.text(orderObject.name);
-  $itemPhoto.text(orderObject.photo_url);
 
   $order.append($itemName);
-  $order.append($itemPhoto);
 
   return $order;
 };

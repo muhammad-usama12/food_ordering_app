@@ -2,7 +2,7 @@ const db = require("../connection");
 
 const getItemsByOrderId = (orderId) => {
   return db.query(`
-  SELECT menu_items.name
+  SELECT menu_items.name, choices.order_id
   FROM menu_items
   JOIN choices on menu_items.id=menu_id
   WHERE order_id = $1
