@@ -10,7 +10,8 @@ CREATE TABLE users (
   name VARCHAR(255) NOT NULL,
   phone BIGINT NOT NULL,
   email VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  is_admin BOOLEAN NOT NULL DEFAULT false
 );
 
 CREATE TABLE menu_items (
@@ -25,7 +26,8 @@ CREATE TABLE orders (
   user_id INT REFERENCES users(id) ON DELETE CASCADE,
   time_ordered TIMESTAMP NOT NULL,
   fill_time_minutes INT,
-  special_request VARCHAR(225)
+  special_request VARCHAR(225),
+  time_completed TIMESTAMP
 );
 
 CREATE TABLE choices (
