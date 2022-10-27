@@ -46,12 +46,14 @@ const menuApiRoutes = require("./routes/menu-api");
 const menuRoutes = require("./routes/menu");
 const cartApiRoutes = require("./routes/cart-api");
 const cartRoutes = require("./routes/cart");
+const ordersApiRoutes = require("./routes/orders-api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use("/api/menu", menuApiRoutes);
 app.use("/api/cart", cartApiRoutes);
+app.use("/api/orders", ordersApiRoutes);
 app.use("/menu", menuRoutes);
 app.use("/cart", cartRoutes);
 // Note: mount other resources here, using the same pattern above

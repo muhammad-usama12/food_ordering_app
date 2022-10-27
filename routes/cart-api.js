@@ -29,4 +29,12 @@ router.post("/delete", (req, res) => {
   })
 });
 
+//this is for orders-api being dev'd by muhammad
+router.get("/", (req, res) => {
+  const userId = req.session.user_id;
+  cartQueries.getCartChoices(userId).then((results) => {
+    res.send(results);
+  })
+});
+
 module.exports = router;
