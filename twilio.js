@@ -1,13 +1,12 @@
 const client = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const orderQueries = require('./db/queries/order')
 
-// client.messages
-// .create({body: 'Hi there', from: '+13238949640', to: '+14165239111'})
-// .then(message => console.log("message test:", message.sid))
-// .catch(err => console.log('message error:', err));
 
-const sendTextMessageCustomer = function (name, phone) {
-  client.messages.create({
-    body: `Hi ${name}, we have received your order!`,
+
+const sendTextMessageCustomer = function (name, phone, order_id, fill_time) {
+
+    client.messages.create({
+    body: `Hi ${name}, we have received your order! Your order ${order_id} will be fulfilled in ${fill_time}`,
     to: phone,
     from: +13238949640
   })
