@@ -39,8 +39,19 @@ const addFillTimeByPhone = (fillTime, phoneNumber) => {
     }).catch((e) => console.log('addFillTimeByPhone err: ', e.message));
 };
 
+const getIncompleteOrders = () => {
+  return db.query(`
+  SELECT id
+  FROM orders
+  WHERE time_completed IS NULL
+  `)
+    .then(data => {
+      return data.rows;
+    }).catch((e) => console.log('getIncompleteOrders err: ', e.message));
+}
 
 
 
 
-module.exports = { getItemsByOrderId, getPhoneByOrderId, addFillTimeByPhone };
+
+module.exports = { getItemsByOrderId, getPhoneByOrderId, addFillTimeByPhone, getIncompleteOrders };
