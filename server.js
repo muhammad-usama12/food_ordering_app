@@ -49,6 +49,7 @@ const cartRoutes = require("./routes/cart");
 const ordersApiRoutes = require("./routes/orders-api");
 const orderApiRoutes = require("./routes/order-api");
 const orderRoutes = require("./routes/order");
+const ordersRoutes = require("./routes/orders");
 
 
 // Mount all resource routes
@@ -61,6 +62,7 @@ app.use("/api/orders", ordersApiRoutes);
 app.use("/menu", menuRoutes);
 app.use("/cart", cartRoutes);
 app.use("/order", orderRoutes);
+app.use("/orders", ordersRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -78,7 +80,7 @@ app.post("/login", (req, res) => {
     .then(result => {
       if (userId && result.is_admin) {
         req.session.user_id = userId;
-        res.redirect("/order");
+        res.redirect("/orders");
       }
       if (userId) {
         req.session.user_id = userId;

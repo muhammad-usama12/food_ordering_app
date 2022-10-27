@@ -3,7 +3,7 @@ $(document).ready(function() {
 
 
   const loadOrder = function() {
-  console.log('load cart test')
+  console.log('load order test')
   $.ajax({
     url: `/api/order`,
     method: "GET",
@@ -19,6 +19,7 @@ $(document).ready(function() {
 
 renderOrder = function(order) {
   $("#order-container").html("");
+  console.log(order);
   const $orderMessage = createOrderMessage(order);
   $("#order-container").append($orderMessage);
   for (let item of order) {
