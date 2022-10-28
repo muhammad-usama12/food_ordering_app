@@ -30,9 +30,9 @@ Once the restaurant receieves a text confirming an order, they can login as admi
 
 ## Installing Missing Dependencies
 
-Install dependencies: npm i
+Install dependencies: `npm i`
 
-Missing dependencies can be installed with: "npm install 'package'
+Missing dependencies can be installed with: `npm install 'package'`
 
 ## Dependencies
 
