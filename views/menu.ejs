@@ -21,15 +21,9 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
     <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
     <link rel="stylesheet" href="/styles/menu-container.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
-      rel="stylesheet"
-    />
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -46,26 +40,31 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Freehand&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- External JS -->
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script defer src="/scripts/menu.js"></script>
   </head>
 
-  <body>
-    <div class="back-image"></div>
-    <!-- Nav Bar (Fixed) -->
-    <nav>
-      <span> Restaurant Name </span>
-      <a href="/cart"><i class="fa-solid fa-bag-shopping"></i></a>
+  <body class="image">
+    <header>
+      <h2 class="logo">Restaurant Name</h2>
+      <a href="/cart"><i class="fa-solid fa-bag-shopping fa-2x"></i></a>
       <form class="form-group" action="/logout" method="POST">
         <button class="btn">Logout</button>
       </form>
-    </nav>
-    <h1>Menu</h1>
+    </header>
+    <!-- <video src="vid/production ID_4253724.mp4" muted loop autoplay></video> -->
     <main class="container">
-      <section id="menu-container">
-      </section>
+      <h1>Menu</h1>
+      <section id="menu-container"></section>
     </main>
   </body>
 </html>
