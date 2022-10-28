@@ -4,19 +4,19 @@ This app helps provides a platform for users to order food by choosing from the 
 
 ## App Screencaps
 
-["Home Page"](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Home%20Page.png)
+!["Home Page"](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Home%20Page.png)
 
 The Login form determines whether the user is a customer or restaurant admin.
 
-["Menu Page"](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Menu%20Page.png)
+!["Menu Page"](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Menu%20Page.png)
 
 If a customer logs in, it redirects them to the menu page to start a new food order.
 
-["Cart Page"](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Cart%20Page.png)
+!["Cart Page"](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Cart%20Page.png)
 
 The customer can process to the cart to see the items they have selected and checkout.
 
-['Order Fill-Time'](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Order%20Fill-Time.png)
+!['Order Fill-Time'](https://github.com/muhammad-usama12/midterm_food_order/blob/master/docs/Order%20Fill-Time.png)
 
 Once the restaurant receieves a text confirming an order, they can login as admin and retrieve the orders and confirm the time i'll take to prepare it.
 
