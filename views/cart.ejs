@@ -20,13 +20,14 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
     <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
     <link rel="stylesheet" href="/styles/cart-container.css" />
 
     <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Freehand&display=swap"
       rel="stylesheet"
     />
     <!-- Bootstrap JS -->
@@ -51,19 +52,16 @@
     <script defer src="/scripts/cart.js"></script>
   </head>
 
-  <body>
-    <!-- Nav Bar (Fixed) -->
-    <nav>
-      <span> Restaurant Name </span>
-      <a href="/cart"><i class="fa-solid fa-bag-shopping"></i></a>
+  <body class="image">
+    <header>
+      <h2 class="logo">Restaurant Name</h2>
       <form class="form-group" action="/logout" method="POST">
-        <button>Logout</button>
+        <button class="btn">Logout</button>
       </form>
-    </nav>
+    </header>
     <main class="container">
       <h1>Cart</h1>
-      <section id="cart-container">
-      </section>
+      <section id="cart-container"></section>
       <form class="form-group" action="/cart" method="POST">
         <button type="submit" class="btn">Place Order!</button>
       </form>
