@@ -15,7 +15,7 @@ const sendTextMessageCustomer = function (name, phone, order_id, fill_time) {
 const sendTextMessageRestaurant = function () {
   client.messages.create({
     body: `Hi! You have a new order. Please visit http://localhost:8080/orders to view the order list!`,
-    to: +14165239111, //test with my number
+    to: +16475407230,
     from: +13238949640
   })
   .then(message => console.log('confirmation message id:', message.sid))
