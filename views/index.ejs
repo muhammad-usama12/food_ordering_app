@@ -13,14 +13,9 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
     <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/index.css" />
     <link rel="stylesheet" href="/styles/layout.css" />
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,600,600i,700,700i|Satisfy|Comic+Neue:300,300i,400,400i,700,700i"
-      rel="stylesheet"
-    />
     <!-- Bootstrap JS -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -43,15 +38,26 @@
   </head>
 
   <body>
-    <div class="back-image"></div>
-    <!-- Nav Bar (Fixed) -->
-    <nav>
-      <span> Restaurant Name </span>
-      <form class="form-group" action="/login" method="POST">
-        <input class="form-control" type="userId" name="userId" placeholder="user ID">
-        <button type="submit" class="btn">Login</button>
-      </form>
-    </nav>
+    <section class="showcase">
+      <header>
+        <h2 class="logo">Restaurant Name</h2>
+        <form class="form-group" action="/login" method="POST">
+          <input
+            class="form-control"
+            type="userId"
+            name="userId"
+            placeholder="USER ID"
+          />
+          <button type="submit" class="btn btn-outline-primary">Login</button>
+        </form>
+      </header>
+      <video src="vid/production ID_4253724.mp4" muted loop autoplay></video>
+      <div class="overlay"></div>
+      <div class="text">
+        <h3>Welcome To</h3>
+        <h2>The Restaurant</h2>
+      </div>
+    </section>
     <main></main>
   </body>
 </html>
