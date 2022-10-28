@@ -14,9 +14,10 @@ const getItemsByOrderId = (orderId) => {
 
 const getUserByOrderId = (orderId) => {
   return db.query(`
-  SELECT DISTINCT users.phone, users.name, choices.order_id
+  SELECT DISTINCT users.phone, users.name, choices.order_id, orders.fill_time_minutes
   FROM users
   JOIN choices on users.id=user_id
+  JOIN orders on orders.id=order_id
   WHERE order_id = $1
   `, [orderId])
     .then(data => {
@@ -24,19 +25,16 @@ const getUserByOrderId = (orderId) => {
     }).catch((e) => console.log('getPhoneByOrderId err: ', e.message));
 };
 
-const addFillTimeByPhone = (fillTime, phoneNumber) => {
+const addFillTimeByOrderId = (fillTime, orderId) => {
   return db.query(`
   UPDATE orders
   SET fill_time_minutes = $1
-  FROM users
-  WHERE users.id=user_id
-  AND phone= $2
-  AND fill_time_minutes IS NULL
-  RETURNING users.name, fill_time_minutes
-  `, [fillTime, phoneNumber])
+  WHERE id = $2
+  RETURNING id, fill_time_minutes
+  `, [fillTime, orderId])
     .then(data => {
       return data.rows[0];
-    }).catch((e) => console.log('addFillTimeByPhone err: ', e.message));
+    }).catch((e) => console.log('addFillTimeByOrderId err: ', e.message));
 };
 
 const getIncompleteOrders = () => {
@@ -65,8 +63,23 @@ const getOrderIdByUserId = (userId) => {
     }).catch((e) => console.log('getPhoneByOrderId err: ', e.message));
 };
 
+const addTimeCompletedByOrderId = (orderId) => {
+  return db.query(`
+  UPDATE orders
+  SET time_completed = Now()
+  WHERE id = $1
+  RETURNING id
+  `, [orderId])
+    .then(data => {
+      return data.rows[0];
+    }).catch((e) => console.log('addTimeCompleted err: ', e.message));
+};
 
-
-
-
-module.exports = { getItemsByOrderId, getUserByOrderId, addFillTimeByPhone, getIncompleteOrders, getOrderIdByUserId };
+module.exports = {
+  getItemsByOrderId,
+  getUserByOrderId,
+  addFillTimeByOrderId,
+  getIncompleteOrders,
+  getOrderIdByUserId,
+  addTimeCompletedByOrderId
+};
