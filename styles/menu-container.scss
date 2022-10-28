@@ -1,30 +1,86 @@
-#menu-container {
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5em;
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
-  padding-left: 6%;
-  padding-right: 6%;
+  justify-content: space-evenly;
+  align-items: center;
 
+  .logo {
+    color: #fff;
+    font-family: "Bungee", sans-serif;
+    font-size: 30pt;
+    padding-right: 1500px;
+    text-transform: uppercase;
+  }
+  .logo:hover {
+    text-shadow: 5px 5px #d0b6b6;
+  }
+  .fa-solid {
+    color: white;
+    size: 20pt;
+    padding-left: 300px;
+  }
+}
+article.menu-item:hover {
+  text-shadow: 10px 10px #d0b6b6;
+  box-shadow: 10px 10px #000000;
+}
+.container {
+  color: white;
+  word-wrap: break-word;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15em;
+
+  h1 {
+    font-family: "Bungee", sans-serif;
+    text-transform: uppercase;
+  }
+  h1:hover {
+    text-shadow: 5px 5px #d0b6b6;
+  }
+
+  #menu-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .menu_id {
+    display: none;
+  }
   .menu-item {
     display: flex;
-    flex-direction: row;
     margin-top: 1.5em;
-    border: solid #000;
+    border: solid rgb(255, 255, 255);
     border-radius: 7px;
     padding-left: 20px;
-  }
+    padding-right: 20px;
+    justify-content: space-between;
+    align-items: baseline;
+    text-transform: uppercase;
+    font-size: 16pt;
+    flex-wrap: wrap;
+    font-family: "Bungee", sans-serif;
 
-  article.menu-item:hover {
-    box-shadow: 8px 8px #dadcea;
-  }
-  .fa-sharp {
-    display: flex;
-    padding-inline-start: 70px;
-    position: relative;
-    top: 20px;
-  }
-  .photo_url {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 60px;
+    h2 {
+      flex-grow: 2;
+    }
+    .add-to-cart {
+      size: 20px;
+      color: #dadcea;
+      padding-left: 30px;
+    }
+    .add-to-cart:hover {
+      text-shadow: 1px 1px rgb(255, 255, 255);
+      size: 20px;
+      color: #dadcea;
+      padding-left: 20px;
+    }
   }
 }

@@ -33,7 +33,7 @@ $(document).ready(function () {
     const orderId = itemObject.id;
     const fillTime = itemObject.fill_time_minutes;
     const $orderMessageDiv = $('<div class="order-message"></div>');
-    const $orderIdMessage = $("<h2>OrderId Number:<h2>");
+    const $orderIdMessage = $("<h2>ORDER NUMBER:<h2>");
     const $orderId = $("<h2></h2>");
     const $orderItemSection = $(`<section class="order-${orderId}"></section>`);
     let $orderFillTime = $(
